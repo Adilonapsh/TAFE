@@ -1,0 +1,269 @@
+body{
+    color:white;
+    margin-top: 0;
+    margin-left: 0;
+    height: auto;
+    width: 100%;
+    font-family: 'Lato Heavy';
+}
+a{
+    text-decoration: none;
+}
+.container1 {
+    height: 700px;
+    background-image:radial-gradient(circle,#c9282b ,#ED1F24);
+}
+.container1 a{
+    color:white;
+}
+.container1 a:hover{
+    text-decoration: none;
+    color:black;
+}
+.nav h2{
+    margin-left: 80px;
+    font-family: 'Edo';
+    color:white;
+    display: inline-block;
+}
+.nav{
+    display: list-item;
+    /* border-style: solid; */
+}
+#Users{
+    margin-left: 20px;
+}
+.nav ul{
+    margin-right: 80px;
+    margin-top: -50px;
+    text-align: right;
+}
+.nav li{
+    padding: 10px;
+    /* margin-left: 30px; */
+    display: inline-block;
+}
+.Page1{
+    
+}
+#PP{
+    position: absolute;
+    top:145px;
+    right: 15%;
+}
+.greet{
+    display: inline-block;
+    position: relative;
+    top: 200px;
+    left:200px;
+}
+.greet p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 7pt;
+    
+}
+.greet h2, .greet h3{
+    font-size: 20pt;
+    margin-bottom: -10px;
+    font-family: 'Edo';
+}
+.greet a{
+    padding:10px;
+    background-color: white;
+    color: #ED1F24;
+    border-radius: 5px;   
+}
+.Page2{
+    margin-top: -17px;
+    height: 300px;
+    background-color: rgb(230, 230, 230);
+    position: relative;
+}
+.descs{
+    position: relative;
+    top: -20px;
+    color: #ED1F24;
+}
+.descs p{
+    font-size: 7pt;
+}
+.descs h2{
+    position: relative;
+    top: -10px;
+}
+.desc-1{
+    position: absolute;
+    top: 100px;
+    left:20% ;
+}
+.desc-1 p{
+    position: relative;
+    left: 30px;
+}
+.desc-1 h2{
+    position: relative;
+    font-size: 12pt;
+    width: 200px;
+}
+.desc-2{
+    position: absolute;;
+    top: 100px;
+    right:20% ;
+    
+}
+.desc-2 p{
+    position: relative;
+    left: 30px;
+}
+.desc-2 h2{
+    position: relative;
+    font-size: 12pt;
+    width: 200px;
+    /* border-style: solid; */
+}
+#elemets1{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: -50px;
+    top: 190px;
+    opacity: 50%;
+}
+.Page3{
+    margin-top: -17px;
+    height: 700px;
+    background-image: radial-gradient(circle,#c9282b ,#ED1F24);
+    position: relative;
+}
+.Page3 h1{
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+.desc-3 p{
+    width: 80%;
+    position: relative;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* border-style: solid; */
+    font-size: 10pt;
+}
+.cards1{
+    position: relative;
+    margin-top: 200px;
+    margin-left: 27%;
+    display: inline-block;
+    
+}
+.card1{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    /* border-style: solid; */
+    text-align: justify;
+    color: #ED1F24;
+    background-color: white ;
+}
+.card1 img{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.card1 h3{
+    margin-top: 0px;
+    margin-left: 30px;
+}
+.card1 p{
+    margin-top: -11px;
+    margin-left: 30px;
+    width: 240px;
+    font-size: 10pt;
+}
+.cards2{
+    position: absolute;
+    margin-top: 200px;
+    left: 50%;
+    display: inline-block;
+}
+
+.Page4{
+    margin-top: -17px;
+    height: 400px;
+    background-color: rgb(230, 230, 230);
+    position: relative;
+
+}
+.Page4 h1{
+    display: inline-block;
+    position: relative;
+    left: 80px;
+    top:-100px ;
+    color: #ED1F24;
+    font-family: 'Edo';
+}
+.Page4 p{
+    display: inline-block;
+    position: relative;
+    left: -100px;
+    top:-30px;
+    width: 200px;
+    height: 100px;
+    /* border-style: solid; */
+    color: #ED1F24 ;
+    font-size: 10pt;
+}
+.Menu{
+    display: inline-block;
+    position: relative;
+    top: -80px;
+    
+}
+.Menu2{
+    display: inline-block;
+    position: relative;
+    left:-450px;
+    top: -40px;
+    
+}
+.Page4 a{
+    color:#ED1F24;
+    
+}
+.Page4 li{
+    display: inline-block;
+    margin-left: 30px;
+    text-align: center;
+}
+.line{
+    position: relative;
+    top: 50px;
+    display: inline-block;
+    height: 200px;
+    width: 1px;
+    background-color:#ED1F24 ;
+}
+.line2{
+    position: relative;
+    left: -200px;
+    top: 50px;
+    display: inline-block;
+    height: 200px;
+    width: 1px;
+    background-color:#ED1F24 ;
+}
+.sosmed ul{
+    display: inline-block;
+    position: relative;
+    /* border-style: solid; */
+    top:-200px;
+    left: 1100px;
+}
+.sosmed li{
+    display: table;
+    
+    color:#ED1F24;
+    top:-200px;
+    left: 1100px;
+}
