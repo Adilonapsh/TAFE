@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::get('Nodemcu', function () {
+    return view('nodemcu');
 });
 
 Auth::routes();
