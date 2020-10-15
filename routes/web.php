@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('Nodemcu', function () {
-    return view('nodemcu');
+    return view('dashboard.dashboard');
+});
+Route::get('app', function () {
+    return view('layouts.app');
 });
 
 Auth::routes();

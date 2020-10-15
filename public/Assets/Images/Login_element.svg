@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="741.5" height="1100.603" viewBox="0 0 741.5 1100.603">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3f65e0;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        opacity: 0.8;
+      }
+
+      .cls-4 {
+        fill: #f8f8f8;
+        font-size: 121px;
+        font-family: Roboto-Bold, Roboto;
+        font-weight: 700;
+        opacity: 0.84;
+      }
+    </style>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(0.5 20.103)">
+    <rect id="Rectangle_9" data-name="Rectangle 9" class="cls-1" width="741" height="1080"/>
+    <path id="Subtraction_2" data-name="Subtraction 2" class="cls-2" d="M-338,522.5H-727.5V133h.5a395.418,395.418,0,0,1,39.773,2.008,389.906,389.906,0,0,1,38.624,5.9,387.038,387.038,0,0,1,73.019,22.666,389.032,389.032,0,0,1,66.078,35.866,391.837,391.837,0,0,1,57.571,47.5,391.78,391.78,0,0,1,47.5,57.571,389.067,389.067,0,0,1,35.866,66.077A387.129,387.129,0,0,1-345.9,443.6a390.192,390.192,0,0,1,5.894,38.623A395.191,395.191,0,0,1-338,522v.5h0Z" transform="translate(727 558)"/>
+    <path id="Polygon_2" data-name="Polygon 2" class="cls-3" d="M55.962,0a10,10,0,0,1,7.071,2.929L82.071,21.967A10,10,0,0,1,85,29.038V55.962a10,10,0,0,1-2.929,7.071L63.033,82.071A10,10,0,0,1,55.962,85H29.038a10,10,0,0,1-7.071-2.929L2.929,63.033A10,10,0,0,1,0,55.962V29.038a10,10,0,0,1,2.929-7.071L21.967,2.929A10,10,0,0,1,29.038,0Z" transform="matrix(0.875, 0.485, -0.485, 0.875, 654.541, 12.174)"/>
+    <text id="x" class="cls-4" transform="translate(465.524 185.341) rotate(42)"><tspan x="0" y="0">x</tspan></text>
+    <rect id="Rectangle_16" data-name="Rectangle 16" class="cls-2" width="104" height="104" transform="translate(56 197)"/>
+    <rect id="Rectangle_17" data-name="Rectangle 17" class="cls-2" width="38" height="38" transform="translate(489.967 918.967) rotate(-30)"/>
+    <path id="Polygon_4" data-name="Polygon 4" class="cls-2" d="M59,0l59,102H0Z" transform="translate(269.694 -20.103) rotate(31)"/>
+  </g>
+</svg>
