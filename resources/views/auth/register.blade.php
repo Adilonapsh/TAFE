@@ -34,12 +34,17 @@
                             </div>
                         </div>
                         <small class="text-muted" style="margin-bottom:30px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, enim.</small><br>
-
                         <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <input id="name" type="text" style="margin-bottom: 20px; margin-top:10px;" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            <input id="username" type="text" style="margin-bottom: 20px; margin-top:10px;" placeholder="Username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
