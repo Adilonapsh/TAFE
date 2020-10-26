@@ -36,4 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('post/update', [App\Http\Controllers\ProjectController::class, 'update']);
     Route::get('post/delete/{id}', [App\Http\Controllers\ProjectController::class, 'destroy']);
 });
+Route::view('coba', 'coba');
+Route::view('cctv', 'cctv');
 Auth::routes();
