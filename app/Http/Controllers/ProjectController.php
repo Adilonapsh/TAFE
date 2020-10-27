@@ -40,12 +40,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $times = date("Y-m-d h:i:s");
+
         Projectss::create([
             'project_owner' => Auth::user()->name,
             'project_name' => $request->Project_name,
             'project_body' => $request->Project_body,
             'status' => $request->status,
             'due' => $request->due,
+            'created_at' => $times,
+            'updated_at' => $times,
         ]);
         return redirect('/dashboard')->with('message', 'Project Created !');
     }
@@ -83,13 +87,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request)
     {
+        $times = date("Y-m-d h:i:s");
         DB::table('projects')->where('id', $request->id)->update([
-            'project_owner' => Auth::user()->name,
+            // 'project_owner' => Auth::user()->name,
             'project_name' => $request->Project_name,
             'project_body' => $request->Project_body,
             'status' => $request->status,
             'due' => $request->due,
-            'updated_at' => today(),
+            'updated_at' => $times,
         ]);
         return redirect('/dashboard')->with('message', 'Project Updated ! ');
     }

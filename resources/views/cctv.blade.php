@@ -9,46 +9,132 @@
 @section('content')
 <div class="container mt-1">
     <div class="header mb-3">
-        <h3>CCTV Overview</h3>
+        <h3>CCTV</h3>
     </div>  
 </div>
+    @if($usrcctvid != 0)
     <div class="container bg-white borad">
-        <div class="row mb-4 justify-content-center d-flex pt-4 pb-4">
-            <div class="row" id="CCTV_VIEW">
-                <div class="col-lg-6 pl-0 pr-0" style="margin-left: 3vh">
-                    <div class="col-lg-6 pb-2 pr-0">
-                        <div class="ml-2 text-lg-right">
-                            <small class="m-0">Cam 1</small>
-                            <a href="#" id="cctv1"><img src="http://192.168.0.100:8080/video" width="426" height="240" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 pb-2 pr-0">
-                        <div class="ml-2 text-lg-right">
-                            <small class="m-0">Cam 3</small>
-                            <a href="#" id="cctv3"><img src="http://192.168.0.101:8080/video" width="426" height="240" alt=""></a>
-                        </div>  
-                    </div>
+        <div class="row mb-3">
+            <div class="row p-4 justify-content-center d-flex">
+                @foreach($cuser as $cctv)
+                <div class="col-xl-3">
+                    <small class="m-0">{{ $cctv->cctv_name }}</small>
+                    <a href="#" id="cctv3"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block" alt=""></a>
                 </div>
-                <div class="col-lg-6 pl-0 pr-0" style="margin-left: -3vh">
-                    <div class="col-lg-6 pb-2 pl-0 ">
-                        <div class="ml-2 text-lg-right">
-                            <small class="m-0">Cam 2</small>
-                            <a href="#" id="cctv2"><img src="http://192.168.0.102:8080/video" width="426" height="240" alt=""></a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+    <div class="container">
+        <div class="Penpro bg-white borad mb-2 border-bottoms-0">
+            <div class="row">
+                <div class="col-12 pl-4 pr-4">
+                    <div class="row p-lg-2 p-3  align-items-center border-bottom">
+                        <div class="col-7">
+                            <span>CCTV Overview</span>
                         </div>
+                        <div class="col-5 text-right align-items-center">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create</button>
+                            <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                        {{-- <div class="col-3 text-right align-items-center">
+                            <a class="btn btn-primary" href="#">Make</a>
+                            <a class="" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                              </svg></a>
+                        </div> --}}
                     </div>
-                    <div class="col-lg-6 pb-2 pl-0 ">
-                        <div class="ml-2 text-lg-right">
-                            <small class="m-0">Cam 4</small>
-                            <a href="#" id="cctv4"><img src="{{ asset('Assets/Images/test.jpg') }}" width="426" height="240" alt=""></a>
-                        </div>  
+                    <div class="row pl-4 pr-4 justify-content-center text-center">
+                        <div class="col-3 pt-2 border-right borad ">
+                            <h3>{{ $usrcctvid }}</h3>
+                            <p class="text-muted">Total CCTV</p>
+                        </div>
+                        <div class="col-3 pt-2 border-right borad">
+                            <h3>{{ $cActive }}</h3>
+                            <p class="text-muted">Active</p>
+                        </div>
+                        <div class="col-3 pt-2 border-right borad">
+                            <h3>{{ $cMaintenance }}</h3>
+                            <p class="text-muted">Maintenance</p>
+                        </div>
+                        <div class="col-3 pt-2">
+                            <h3>{{ $cNonactive }}</h3>
+                            <p class="text-muted">Nonactive</p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <div class='container mt-1'>
+            <div class="row bg-white">
+                <div class="col-lg-12">
+                    @foreach ($cctvid as $cctv)
+                    <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-success align-items-center">
+                        <div class="col-lg-7">
+                            <div class="col-12"><h4 class="border-bottom">{{ $cctv->cctv_name }}</h4></div>
+                            <div class="col-12"><p id="P_PB{{ $cctv->id }}">{{ $cctv->cctv_ip }}</p></div>
+                        </div>
+                        <div class="col-2 "><!--mt-2-->
+                            <div class="row justify-content-center"><b>Status</b></div>
+                            <div class="row justify-content-center">{{ $cctv->status }}</div>
+                        </div>
+                        <div class="col-lg-3 col-sm-3 text-right  "> <!--mt-lg-4-->
+                            <a class="btn btn-primary" href="cctv/edit/{{ $cctv->id }}">Edit</a>
+                            <a class="btn btn-primary" href="#">View</a>
+                            <a class="btn btn-primary" href="/cctv/delete/{{ $cctv->id }}" onclick="return confirm('Anda Yakin ?');">Delete</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
-
-    
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create CCTV</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="/cctv/create" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <h5>CCTV Name</h5>
+                        <input type="text" class="form-control" name="Cctv_name" placeholder="Nama CCTV" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>CCTV IP</h5>
+                        <input type="text" class="form-control" name="Cctv_ip" placeholder="http://192.168.0.101/" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>Status</h5>
+                        <select name="status" class="form-control" required>
+                            <option value="Active">Active</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Non Active">Non Active</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right mr-4">Save</button>
+                    <button type="reset" class="btn btn-primary float-right mr-2">Clear</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 @section('sidebarcontent')
 <div class="row">
@@ -155,10 +241,56 @@
         <small id="TNVE">50</small>
     </div>
 </div>
+<hr class="m-2">
+<div class="row">
+    <div class="col-12 text-right">
+        <small>Night Vision Exposure</small>
+    </div>
+    <div class="col-12">
+        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
+    </div>
+    <div class="col-12">
+        <small id="TNVE">50</small>
+    </div>
+</div>
+<hr class="m-2">
+<div class="row">
+    <div class="col-12 text-right">
+        <small>Night Vision Exposure</small>
+    </div>
+    <div class="col-12">
+        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
+    </div>
+    <div class="col-12">
+        <small id="TNVE">50</small>
+    </div>
+</div>
+<hr class="m-2">
+<div class="row">
+    <div class="col-12 text-right">
+        <small>Night Vision Exposure</small>
+    </div>
+    <div class="col-12">
+        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
+    </div>
+    <div class="col-12">
+        <small id="TNVE">50</small>
+    </div>
+</div>
 @endsection
 @section('script')
     <script>
-        
+        $(document).ready(function() {
+            $.ajax({
+                url: "http://192.168.10.139:8080/photo.jpg",
+                error: function(){
+                    console.log('Mati kau');
+                },
+                success: function(){
+                    console.log('Nyala Kau');
+                }
+            });
+        });
     </script>
     <script src="{{ asset('js/Noreplyao.js') }}"></script>
 @endsection

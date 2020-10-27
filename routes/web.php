@@ -35,7 +35,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('post/edit/{id}', [App\Http\Controllers\ProjectController::class, 'edit']);
     Route::post('post/update', [App\Http\Controllers\ProjectController::class, 'update']);
     Route::get('post/delete/{id}', [App\Http\Controllers\ProjectController::class, 'destroy']);
+
+    Route::get('/cctv', [App\Http\Controllers\CCTVController::class, 'index']);
+    Route::get('/cctv/create', [App\Http\Controllers\CCTVController::class, 'create']);
+    Route::post('/cctv/create', [App\Http\Controllers\CCTVController::class, 'store']);
+    Route::get('/cctv/edit/{id}', [App\Http\Controllers\CCTVController::class, 'edit']);
+    Route::post('/cctv/update', [App\Http\Controllers\CCTVController::class, 'update']);
+    Route::get('/cctv/delete/{id}', [App\Http\Controllers\CCTVController::class, 'destroy']);
 });
 Route::view('coba', 'coba');
-Route::view('cctv', 'cctv');
+// Route::view('cctv', 'cctv');
 Auth::routes();

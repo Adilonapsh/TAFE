@@ -12,7 +12,7 @@
                 <textarea name="Project_body" class="form-control"id="" cols="30" rows="10" required></textarea>
             </div>
             <div class="form-group">
-                <label for="">Status</label>
+                <h5>Status</h5>
                 <select name="status" class="form-control" required>
                     <option value="Complete">Done</option>
                     <option value="On Progress">On Progress</option>
@@ -20,6 +20,7 @@
                 </select>
             </div>
             <div class="form-group">
+                <h5>Due</h5>
                 <input type="date" class="form-control" name="due" required>
             </div>
             <button type="submit" class="btn btn-primary float-right mr-4">Save</button>

@@ -165,7 +165,7 @@
                 <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-success align-items-center">
                     <div class="col-lg-7">
                         <div class="col-12"><h4 class="border-bottom">{{ $post->project_name }}</h4></div>
-                        <div class="col-12"><p>{{ $post->project_body }}</p></div>
+                        <div class="col-12"><p id="P_PB{{ $post->id }}">{{ $post->project_body }}</p></div>
                     </div>
                     <div class="col-2 "><!--mt-2-->
                         <div class="row justify-content-center"><b>Status</b></div>
@@ -193,4 +193,20 @@
         </div>
     </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            for(i=0;i<1000;i++){
+                var text = $("#P_PB"+i);
+                var count = text.text().length;
+                if(count >= 40){
+                    var str = text.text();
+                    var res = str.substring(0,80);
+                    text.text(res + "...");
+                }
+            }
+        });
+    </script>
 @endsection

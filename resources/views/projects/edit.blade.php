@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <h5>Project Body</h5>
-                <textarea name="Project_body" class="form-control"id="" cols="30" rows="10" value="{{ $projects->project_body }}" required></textarea>
+                <textarea name="Project_body" class="form-control"id="" cols="30" rows="10" required>{{ $projects->project_body }}</textarea>
             </div>
             <div class="form-group">
                 <label for="">Status</label>
@@ -28,4 +28,7 @@
             <button type="reset" class="btn btn-primary float-right mr-2">Clear</button>
         </form>
     </div>
+@endsection
+@section('script')
+
 @endsection
