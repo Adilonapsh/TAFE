@@ -19,7 +19,7 @@
                 @foreach($cuser as $cctv)
                 <div class="col-xl-3">
                     <small class="m-0">{{ $cctv->cctv_name }}</small>
-                    <a href="#" id="cctv3"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block" alt=""></a>
+                    <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block " alt=""></a>
                 </div>
                 @endforeach
             </div>
@@ -35,7 +35,7 @@
                             <span>CCTV Overview</span>
                         </div>
                         <div class="col-5 text-right align-items-center">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#Createmodal">Create</button>
                             <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -90,7 +90,7 @@
                             <div class="row justify-content-center">{{ $cctv->status }}</div>
                         </div>
                         <div class="col-lg-3 col-sm-3 text-right  "> <!--mt-lg-4-->
-                            <a class="btn btn-primary" href="cctv/edit/{{ $cctv->id }}">Edit</a>
+                            <a class="btn btn-primary" href="#" data-target="#editmodal" data-toggle="modal">Edit</a>
                             <a class="btn btn-primary" href="#">View</a>
                             <a class="btn btn-primary" href="/cctv/delete/{{ $cctv->id }}" onclick="return confirm('Anda Yakin ?');">Delete</a>
                         </div>
@@ -100,7 +100,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Createmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -135,6 +135,41 @@
           </div>
         </div>
       </div>
+    <div class="modal fade" id="Editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create CCTV</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="/cctv/update" method="POST">
+                    @csrf   
+                    <div class="form-group">
+                        <h5>CCTV Edit</h5>
+                        <input type="text" class="form-control" name="Cctv_name" placeholder="Nama CCTV" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>CCTV IP</h5>
+                        <input type="text" class="form-control" name="Cctv_ip" placeholder="http://192.168.0.101/video" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>Status</h5>
+                        <select name="status" class="form-control" required>
+                            <option value="Active">Active</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Non Active">Non Active</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right mr-4">Save</button>
+                    <button type="reset" class="btn btn-primary float-right mr-2">Clear</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 @section('sidebarcontent')
 <div class="row">
@@ -145,7 +180,6 @@
         <span class="text-right" id="cam_selection">Cam 1</span>
     </div>
 </div>
-
 <hr>
 <small>Camera</small>
 <hr class="m-2">
@@ -281,16 +315,42 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $.ajax({
-                url: "http://192.168.10.139:8080/photo.jpg",
-                error: function(){
-                    console.log('Mati kau');
-                },
-                success: function(){
-                    console.log('Nyala Kau');
+            var ctv = [];
+            var id = [];
+            for(i=0;i<100;i++){
+                var k = 'ctv';
+                var ctvsrc = $('.cctvclass').find('img')[i].src;
+                var ids = $('.cctvclass')[i].id;
+                var replace = ctvsrc.replace('video','');
+                ctv[i] = replace;
+                id[i] = '#'+ids;
+                
+                // console.log(id);
+                console.log("ctv"+i+" = "+ ctv[i]);
+                console.log(id[i]);
+                // console.log(ctv[0]);
+                
+                if(typeof ctvsrc === 'undefined'){
+                    break;
                 }
+            }
+            array.forEach(id => {
+                console.log('2920202020');
+                
             });
+            
+
+
+            // $.ajax({
+            //     url: "http://192.168.0.100:8080/photo.jpg",
+            //     error: function(){
+            //         console.log('Mati');
+            //     },
+            //     success: function(){
+            //         console.log('Nyala');
+            //     }
+            // });
         });
     </script>
-    <script src="{{ asset('js/Noreplyao.js') }}"></script>
+    {{-- <script src="{{ asset('js/Noreplyao.js') }}"></script> --}}
 @endsection

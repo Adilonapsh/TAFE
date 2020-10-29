@@ -5,6 +5,7 @@
     <title>@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../dist/img/AdminLTELogo.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -25,8 +26,6 @@
     <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css">
     <!--Sweet Alert-->
     <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    {{-- font --}}
-    <link rel="stylesheet" href="../../css/font.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- toastr --}}
@@ -81,9 +80,9 @@
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="dist/js/demo.js"></script> --}}
     <!--sweet Alert-->
-    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    {{-- <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script> --}}
     {{-- Toaster --}}
-    <script src="../../plugins/toastr/toastr.min.js"></script>
+    {{-- <script src="../../plugins/toastr/toastr.min.js"></script> --}}
     @yield('script')
 </body>
 </html>
