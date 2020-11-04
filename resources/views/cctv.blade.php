@@ -4,6 +4,15 @@
         .borad{
             border-radius: 5px;
         }
+        .borders{
+            border: 10px; !important;
+        }
+        .border-bottoms-0{
+            border-radius: 5px 5px 0px 0px;
+        }
+        .border-tops-0{
+           border-radius: 0px 0px 5px 5px;
+        }
     </style>
 @endsection
 @section('content')
@@ -18,8 +27,8 @@
             <div class="row p-4 justify-content-center d-flex">
                 @foreach($cuser as $cctv)
                 <div class="col-xl-3">
-                    <small class="m-0">{{ $cctv->cctv_name }}</small>
-                    <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block " alt=""></a>
+                    <small class="m-0 ">{{ $cctv->cctv_name }}</small>
+                    <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block" width="100%" alt=""></a>
                 </div>
                 @endforeach
             </div>
@@ -77,20 +86,20 @@
             </div>
         </div>
         <div class='container mt-1'>
-            <div class="row bg-white">
-                <div class="col-lg-12">
+            <div class="row bg-white border-tops-0">
+                <div class="col-lg-12 pl-5 pr-5 pb-3 ">
                     @foreach ($cctvid as $cctv)
-                    <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-success align-items-center">
-                        <div class="col-lg-7">
+                    <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-primary align-items-center">
+                        <div class="col-sm-6 col-lg-7">
                             <div class="col-12"><h4 class="border-bottom">{{ $cctv->cctv_name }}</h4></div>
                             <div class="col-12"><p id="P_PB{{ $cctv->id }}">{{ $cctv->cctv_ip }}</p></div>
                         </div>
-                        <div class="col-2 "><!--mt-2-->
+                        <div class="col-sm-2 col-lg-2 mb-3"><!--mt-2-->
                             <div class="row justify-content-center"><b>Status</b></div>
                             <div class="row justify-content-center">{{ $cctv->status }}</div>
                         </div>
-                        <div class="col-lg-3 col-sm-3 text-right  "> <!--mt-lg-4-->
-                            <a class="btn btn-primary" href="#" data-target="#editmodal" data-toggle="modal">Edit</a>
+                        <div class="col-sm-12 col-lg-3 text-right  "> <!--mt-lg-4-->
+                            <a class="btn btn-primary edits" href="/cctv/edit/{{ $cctv->id }}">Edit</a><!--data-target="#editmodal" data-toggle="modal"-->
                             <a class="btn btn-primary" href="#">View</a>
                             <a class="btn btn-primary" href="/cctv/delete/{{ $cctv->id }}" onclick="return confirm('Anda Yakin ?');">Delete</a>
                         </div>
@@ -147,6 +156,7 @@
             <div class="modal-body">
                 <form action="/cctv/update" method="POST">
                     @csrf   
+                    <input type="hidden" id="getid" name="id" value="{{ $cctv->id }}">
                     <div class="form-group">
                         <h5>CCTV Edit</h5>
                         <input type="text" class="form-control" name="Cctv_name" placeholder="Nama CCTV" required>
@@ -204,153 +214,72 @@
 <hr class="m-2">
 <small>Camera Control</small>
 <hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Zoom</small>
+<form role="form">
+    <div class="row">
+        <div class="col-12 text-right">
+            <small>Zoom</small>
+        </div>
+        <div class="col-12">
+            <input type="range" class="w-100 bar" min="0" max="100" value="60" name="" id="range_zoom">
+        </div>
+        <div class="col-12">
+            <small id="RZL">50 X</small>
+        </div>
     </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="100" value="60" name="" id="zoom">
+    <hr class="m-2">
+    <div class="row">
+        <div class="col-12 text-right">
+            <small>Stream Quality</small>
+        </div>
+        <div class="col-12">
+            <input type="range" class="w-100 bar" min="0" max="100" value="20" name="" id="stream_quality">
+        </div>
+        <div class="col-12">
+            <small id="TSQ">50</small>
+        </div>
     </div>
-    <div class="col-12">
-        <small id="TZ">50</small>
+    <hr class="m-2">
+    <div class="row">
+        <div class="col-12 text-right">
+            <small>Exposure Compensation</small>
+        </div>
+        <div class="col-12">
+            <input type="range" class="w-100 bar" min="0" max="13" value="10" name="" id="exposure">
+        </div>
+        <div class="col-12">
+            <small id="TEC">50</small>
+        </div>
     </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Stream Quality</small>
+    <hr class="m-2">
+    <div class="row">
+        <div class="col-12 text-right">
+            <small>Night Vision Gain</small>
+        </div>
+        <div class="col-12">
+            <input type="range" class="w-100 bar" min="0" max="13" value="10" name="" id="night_vision_gain">
+        </div>
+        <div class="col-12">
+            <small id="TNVG">50</small>
+        </div>
     </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="100" value="20" name="" id="stream_quality">
+    <hr class="m-2">
+    <div class="row">
+        <div class="col-12 text-right">
+            <small>Night Vision Exposure</small>
+        </div>
+        <div class="col-12">
+            <input type="range" class="w-100 bar" min="0" max="13" value="10" name="" id="night_vision_Exposure">
+        </div>
+        <div class="col-12">
+            <small id="TNVE">50</small>
+        </div>
     </div>
-    <div class="col-12">
-        <small id="TSQ">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Exposure Compensation</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="exposure">
-    </div>
-    <div class="col-12">
-        <small id="TEC">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Gain</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_gain">
-    </div>
-    <div class="col-12">
-        <small id="TNVG">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Exposure</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
-    </div>
-    <div class="col-12">
-        <small id="TNVE">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Exposure</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
-    </div>
-    <div class="col-12">
-        <small id="TNVE">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Exposure</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
-    </div>
-    <div class="col-12">
-        <small id="TNVE">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Exposure</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
-    </div>
-    <div class="col-12">
-        <small id="TNVE">50</small>
-    </div>
-</div>
-<hr class="m-2">
-<div class="row">
-    <div class="col-12 text-right">
-        <small>Night Vision Exposure</small>
-    </div>
-    <div class="col-12">
-        <input type="range" class="w-100" min="0" max="13" value="10" name="" id="night_vision_Exposure">
-    </div>
-    <div class="col-12">
-        <small id="TNVE">50</small>
-    </div>
-</div>
+    <hr class="m-2">
+    
+</form>
 @endsection
 @section('script')
     <script>
-        $(document).ready(function() {
-            var ctv = [];
-            var id = [];
-            for(i=0;i<100;i++){
-                var k = 'ctv';
-                var ctvsrc = $('.cctvclass').find('img')[i].src;
-                var ids = $('.cctvclass')[i].id;
-                var replace = ctvsrc.replace('video','');
-                ctv[i] = replace;
-                id[i] = '#'+ids;
-                
-                // console.log(id);
-                console.log("ctv"+i+" = "+ ctv[i]);
-                console.log(id[i]);
-                // console.log(ctv[0]);
-                
-                if(typeof ctvsrc === 'undefined'){
-                    break;
-                }
-            }
-            array.forEach(id => {
-                console.log('2920202020');
-                
-            });
-            
-
-
-            // $.ajax({
-            //     url: "http://192.168.0.100:8080/photo.jpg",
-            //     error: function(){
-            //         console.log('Mati');
-            //     },
-            //     success: function(){
-            //         console.log('Nyala');
-            //     }
-            // });
-        });
     </script>
-    {{-- <script src="{{ asset('js/Noreplyao.js') }}"></script> --}}
+    <script src="{{ asset('js/Noreplyao.js') }}"></script>
 @endsection

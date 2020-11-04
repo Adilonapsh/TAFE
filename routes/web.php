@@ -46,3 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::view('coba', 'coba');
 // Route::view('cctv', 'cctv');
 Auth::routes();
+Route::get('/unch', function () {
+    return response()->streamDownload(function () {
+        echo file_get_contents('https://image.tmdb.org/t/p/original/askg3SMvhqEl4OL52YuvdtY40Yb.jpg');
+    }, 'nice-name.jpg');
+});

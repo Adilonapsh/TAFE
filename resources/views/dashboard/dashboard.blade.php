@@ -163,15 +163,15 @@
             <div class="col-lg-12 pt-3 ">
                 @foreach ($posts as $post)
                 <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-success align-items-center">
-                    <div class="col-lg-7">
+                    <div class="col-sm-6 col-lg-7">
                         <div class="col-12"><h4 class="border-bottom">{{ $post->project_name }}</h4></div>
                         <div class="col-12"><p id="P_PB{{ $post->id }}">{{ $post->project_body }}</p></div>
                     </div>
-                    <div class="col-2 "><!--mt-2-->
+                    <div class="col-sm-2 col-lg-2 mb-3"><!--mt-2-->
                         <div class="row justify-content-center"><b>Status</b></div>
                         <div class="row justify-content-center"><span class="btn @if($post->status == 'Complete') btn-success @elseif($post->status == 'Out Off Schedule') btn-danger @elseif($post->status == 'On Progress') btn-warning @endif">{{ $post->status }}</span></div>
                     </div>
-                    <div class="col-lg-3 col-sm-3 text-right  "> <!--mt-lg-4-->
+                    <div class="col-sm-12 col-lg-3  text-right  "> <!--mt-lg-4-->
 
                         {{-- <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
