@@ -155,8 +155,10 @@
             </div>
             <div class="modal-body">
                 <form action="/cctv/update" method="POST">
-                    @csrf   
-                    <input type="hidden" id="getid" name="id" value="{{ $cctv->id }}">
+                    @csrf
+                    @if (!empty($cctv))
+                        <input type="hidden" id="getid" name="id" value="{{ $cctv->id }}">
+                    @endif
                     <div class="form-group">
                         <h5>CCTV Edit</h5>
                         <input type="text" class="form-control" name="Cctv_name" placeholder="Nama CCTV" required>
@@ -220,7 +222,7 @@
             <small>Zoom</small>
         </div>
         <div class="col-12">
-            <input type="range" class="w-100 bar" min="0" max="100" value="60" name="" id="range_zoom">
+            <input type="range" class="w-100 bar" min="0" max="100" value="0" name="" id="range_zoom">
         </div>
         <div class="col-12">
             <small id="RZL">50 X</small>

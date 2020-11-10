@@ -17,7 +17,7 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('landingpage');
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('Nodemcu', function () {

@@ -1,6 +1,6 @@
-<aside class="main-sidebar sidebar-no-expand sidebar-light-danger">
+<aside class="main-sidebar sidebar-no-expand sidebar-light-primary">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link navbar-danger">
+  <a href="/" class="brand-link navbar-primary">
     <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <b class="brand-text text-white">Adilonapsh</b>
   </a>
@@ -29,7 +29,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link active">
+          <a href="#" class="nav-link {{ Request::is('dashboard*')? 'active': '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -46,7 +46,7 @@
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link {{ Request::is('cctv*')? 'active': ''}}">
             <i class="nav-icon fad fa-cctv"></i>
             <p>
               CCTV
@@ -55,7 +55,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="/cctv" class="nav-link">
                 <i class="fas fa-video nav-icon"></i>
                 <p>Video</p>
               </a>

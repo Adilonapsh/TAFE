@@ -1,0 +1,29 @@
+.wow{
+    background-color: rgb(255, 189, 189);
+} 
+#hero .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+.btn-get-started{
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:#3474eb;
+    color: white;
+    font-weight: bold;
+}
+.buttons:hover{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.bg-1{
+    background-color: white;
+    color:black;
+}
+.bg-2{
+    background-color: #0b1529;
+    color: white;
+}
+ul{
+    list-style-type: none;
+}

@@ -112,12 +112,16 @@ $(document).ready(function() {
         var val2 = $("#stream_quality").val();
         var val3 = $("#exposure").val();
         var val4 = $("#night_vision_gain").val();
-
         $('#RZL').text(val1 + ' X');
         $('#TSQ').text(val2);
         $('#TEC').text(val3);
         $('#TNVG').text(val4);
-        $('#TNVE').text(val5);
+        $.ajax(root+'/ptz?zoom='+val1); 
+        $.ajax(root+'/settings/quality?set='+val2);
+        $.ajax(root+'/settings/exposure?set='+val3);
+        $.ajax(root+'/settings/night_vision_gain?set='+val4).
+
+
     });
 }); 
 
