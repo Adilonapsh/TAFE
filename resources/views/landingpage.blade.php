@@ -76,6 +76,7 @@
     </div>
   </div>
   <div class="container-fluid bg-2 p-5">
+    <div class="container">
     <div class="row justify-content-center mb-4">
       <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="100"><h3>About Us</h3></div>
     </div>
@@ -88,20 +89,23 @@
       </div>
       <div class="col-lg-5">
         <p data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda neque placeat, labore atque dignissimos dolorum nobis asperiores molestias repellat aperiam saepe culpa </p>
-        <a href="#" class="btn-get-started buttons shadow mt-3" data-aos="fade-up" data-aos-delay="500">Learn More</a>
+        <a href="#" class="btn-get-started buttons shadow pt-2" data-aos="fade-up" data-aos-delay="500">Learn More</a>
       </div>
     </div>
   </div>
+</div>
   <div class="container-fluid bg-1 p-5">
-    <div class="row">
-      <div class="col-lg-5 d-flex align-items-center mb-5">
-        <img src="{{ asset("img/counts-img.svg") }}" class="img-fluid img-size-64" alt="">
-      </div>
-      <div class="col-lg-4 pl-5 pt-lg-5">
-        <h3 data-aos="fade-left" data-aos-delay="200">Lorem, ipsum dolor.</h3>
-        <p data-aos="fade-left" data-aos-delay="300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus impedit placeat, quos saepe facilis soluta ex! Cupiditate non modi dicta, minima, excepturi dolor ex tenetur sapiente nobis quia iste. Enim.</p>
-      </div>
-    </div> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 d-flex align-items-center mb-5">
+          <img src="{{ asset("img/counts-img.svg") }}" class="img-fluid img-size-64" alt="" data-aos="fade-right" data-aos-delay="200">
+        </div>
+        <div class="col-lg-4 pl-5 pt-lg-5">
+          <h3 data-aos="fade-left" data-aos-delay="200">Lorem, ipsum dolor.</h3>
+          <p data-aos="fade-left" data-aos-delay="300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus impedit placeat, quos saepe facilis soluta ex! Cupiditate non modi dicta, minima, excepturi dolor ex tenetur sapiente nobis quia iste. Enim.</p>
+        </div>
+      </div> 
+    </div>
   </div>
   <script>
     function aos_init() {

@@ -28,7 +28,7 @@
                 @foreach($cuser as $cctv)
                 <div class="col-xl-3">
                     <small class="m-0 ">{{ $cctv->cctv_name }}</small>
-                    <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" class="img-fluid mx-auto d-block" width="100%" alt=""></a>
+                    <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" onerror="this.src='{{ asset('img/No-signal.jpg') }}';" class="img-fluid mx-auto d-block" width="100%"></a>
                 </div>
                 @endforeach
             </div>

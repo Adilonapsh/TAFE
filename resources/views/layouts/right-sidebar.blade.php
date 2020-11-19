@@ -1,4 +1,4 @@
-<aside class="control-sidebar control-sidebar-dark" style="top: 57px; height: 610px; display: block;">
+<aside class="control-sidebar control-sidebar-light" style="top: 57px; height: 610px; display: block;">
   <!-- Control sidebar content goes here -->
   <div class="p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition" style="height: 610px;">
     <div class="os-resize-observer-host">

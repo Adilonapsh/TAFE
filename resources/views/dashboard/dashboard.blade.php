@@ -48,6 +48,7 @@
         }
 
 </style>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 @endsection
 @section('content')
     {{-- Card Dashboard --}}
@@ -192,11 +193,19 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <canvas id="linechart" width="500" height="200"></canvas>
+    </div>
+    <div id="linecharts"></div>
     </div>
 @endsection
 
 @section('script')
+    <script src="{{ asset('plugins/socket.io-client/dist/socket.io.js') }}"></script>
+
     <script>
+        var senul = [];
+        var socket = io.connect('http://localhost:2001');
         $(document).ready(function() {
             for(i=0;i<1000;i++){
                 var text = $("#P_PB"+i);
@@ -208,5 +217,82 @@
                 }
             }
         });
+
+        // socket.on('ultra',function(message){
+        //     // console.log(message);
+        //     senul = message;
+        //     console.log(senul);
+        //     addData(pirChart,[senul],senul);
+        // });
+        // socket.on('pir',function(message){
+        //     console.log(message);
+        //     var today = new Date();
+        //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //     if (message==1){
+        //         addData(pirChart,time,message);
+        //     }
+        // });
+        
+        setInterval(function(){ 
+            senul = Math.floor((Math.random()*2));
+            console.log(senul);
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            if (senul==1){
+                if (time==time&& senul!=0){
+                    addData(pirChart,time,senul);
+
+                }
+            }
+
+        }, 1000);
+        
+        var ctx = document.getElementById('linechart').getContext('2d');
+        var pirChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: '',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        function addData(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            chart.update();
+        }
+        function removeData(chart) {
+            chart.data.labels.pop();
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.pop();
+            });
+            chart.update();
+        }
+        
+
+        
+        
+        
     </script>
 @endsection

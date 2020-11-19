@@ -2,13 +2,16 @@
 var root = "";
 var takefoto = $('#takefoto');
 var camsel = $('#cam_selection');
+var flashcb = $('#flashcb');
+var record = $('#Rec_btn');
+var stoprec = $('#Stoprec_btn');
 var ctv = [];
 var id = [];
 var camname = [];
 var camclick=[];
-var flashcb = $('#flashcb');
-var record = $('#Rec_btn');
-var stoprec = $('#Stoprec_btn');
+var config = [];
+var sensor =[];
+var status = {};
 
 // Static 
 // ctv1.click(function(){
@@ -37,15 +40,17 @@ var stoprec = $('#Stoprec_btn');
 // });
 
 $(document).ready(function() {
+    
     try{
         for(i=0;i<100;i++){
             var k = 'ctv';
-            var ctvsrc = $('.cctvclass').find('img')[i].src;
-            var ids = $('.cctvclass')[i].id;
+            var ctvsrc = $('.cctvclass').find('img')[i].src; //ambil URL view dari database
+            var ids = $('.cctvclass')[i].id; //ambil id contoh #CCTV1..
             // var cnm = $('#ctvname'+i).text();
-            var replace = ctvsrc.replace('video','');
-            ctv[i] = replace;
-            id[i] = '#'+ids;
+            var replace = ctvsrc.replace('video',''); //Replace url dari 192.168.0.0/video ke 192.168.0.0/
+            ctv[i] = replace; //simpan url replace ke replace array
+            id[i] = '#'+ids; //simpan id ke id id array
+
             // for (i in ctv ) {
             //     camclick[i] = $(id[i]).click(function(){
             //         root = ctv[0];
@@ -57,10 +62,9 @@ $(document).ready(function() {
             console.log("ctv"+i+" = "+ ctv[i]);
             console.log(id[i]);
 
-
             // console.log(camclick);
             
-            if(typeof ctvsrc === 'undefined'){
+            if(typeof ctvsrc === 'undefined'){ //jika ctv tidak ada / undifined maka loop berhenti
                 break;
             }
         }
@@ -69,15 +73,16 @@ $(document).ready(function() {
         console.log('Error occured !');
     }
 
-    for(i in id){
-        $(id[i]).click(function(){
+    for(i in id){ 
+        $(id[i]).click(function(){ //jika id di click maka  fugis ini jalan
             wreck = $('#'+this.id).find('img').attr('src');
             replace = wreck.replace('video','');
-            root = replace;
-            takefoto.attr("href", root+"photo.jpg");
-            camsel.text(this.id);
+            root = replace; //ganti URL ke root
+            takefoto.attr("href", root+"photo.jpg"); //ambil atribut href dan tampatkan root/PushSubscriptionOptions.jpg
+            camsel.text(this.id); //ganti sidebar header cam ke id ini
             console.log('Clicked'+this.id);
             console.log(root);
+            callajax();
         });
     }
     //flash
@@ -106,23 +111,35 @@ $(document).ready(function() {
     //         console.log('Nyala');
     //     }
     // });
-
-    $('.bar').on('input', function () {
-        var val1 = $("#range_zoom").val();
-        var val2 = $("#stream_quality").val();
-        var val3 = $("#exposure").val();
-        var val4 = $("#night_vision_gain").val();
-        $('#RZL').text(val1 + ' X');
-        $('#TSQ').text(val2);
-        $('#TEC').text(val3);
-        $('#TNVG').text(val4);
-        $.ajax(root+'/ptz?zoom='+val1); 
-        $.ajax(root+'/settings/quality?set='+val2);
-        $.ajax(root+'/settings/exposure?set='+val3);
-        $.ajax(root+'/settings/night_vision_gain?set='+val4).
+});
 
 
-    });
-}); 
 
 
+
+$('.bar').on('input', function () {
+    var val1 = $("#range_zoom").val();
+    var val2 = $("#stream_quality").val();
+    var val3 = $("#exposure").val();
+    var val4 = $("#night_vision_gain").val();
+    $('#RZL').text(val1 + ' X');
+    $('#TSQ').text(val2);
+    $('#TEC').text(val3);
+    $('#TNVG').text(val4);
+    $.ajax(root+'/ptz?zoom='+val1); 
+    $.ajax(root+'/settings/quality?set='+val2);
+    $.ajax(root+'/settings/exposure?set='+val3);
+    $.ajax(root+'/settings/night_vision_gain?set='+val4);
+});
+ 
+
+var callajax=function(){
+    $.ajax(root+'status.json?show_avail=1')
+        .done(function (data) {
+            config = data;
+        })
+        .fail(function (xhr, textStatus, errorThrown) {
+            console.log("error occured");
+        });
+        console.log(config);
+}

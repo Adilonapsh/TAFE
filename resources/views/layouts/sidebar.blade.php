@@ -55,8 +55,14 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/cctv" class="nav-link">
+              <a href="/cctv" class="nav-link {{ Request::is('cctv*')? 'active': ''}}">
                 <i class="fas fa-video nav-icon"></i>
+                <p>Camera</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/video" class="nav-link {{ Request::is('cctv*')? 'active': ''}}">
+                <i class="fas fa-film nav-icon"></i>
                 <p>Video</p>
               </a>
             </li>

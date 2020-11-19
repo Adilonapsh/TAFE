@@ -42,12 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cctv/edit/{id}', [App\Http\Controllers\CCTVController::class, 'edit']);
     Route::post('/cctv/update', [App\Http\Controllers\CCTVController::class, 'update']);
     Route::get('/cctv/delete/{id}', [App\Http\Controllers\CCTVController::class, 'destroy']);
+    Route::get('/video', [App\Http\Controllers\VideoController::class, 'index']);
 });
 Route::view('coba', 'coba');
 // Route::view('cctv', 'cctv');
 Auth::routes();
 Route::get('/unch', function () {
-    return response()->streamDownload(function () {
-        echo file_get_contents('https://image.tmdb.org/t/p/original/askg3SMvhqEl4OL52YuvdtY40Yb.jpg');
-    }, 'nice-name.jpg');
 });
