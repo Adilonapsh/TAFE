@@ -7,10 +7,10 @@
   <title>Adilonapsh</title>
   <link rel="stylesheet" href="{{ asset("css/Style.css") }}">
   <link rel="stylesheet" href="{{ asset("css/aos.css") }}">
-  <link rel="stylesheet" href="../../plugins/fontawesome5pro/css/all.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ asset("plugins/fontawesome5pro/css/all.css") }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+  <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('/plugins/bootstrap/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset("js/aos.js") }}"></script>
 
 </head>
@@ -75,10 +75,10 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid bg-2 p-5">
+  <div class="container-fluid bg-2 p-5" id="about">
     <div class="container">
     <div class="row justify-content-center mb-4">
-      <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="100"><h3>About Us</h3></div>
+      <div class="col-12 text-center"  data-aos="fade-up" data-aos-delay="100"><h3>About Us</h3></div>
     </div>
     <div class="row justify-content-center text-justify">
       <div class="col-lg-5">
@@ -94,7 +94,7 @@
     </div>
   </div>
 </div>
-  <div class="container-fluid bg-1 p-5">
+  <div class="container-fluid bg-1 p-5" id="kelebihan">
     <div class="container">
       <div class="row">
         <div class="col-lg-5 d-flex align-items-center mb-5">

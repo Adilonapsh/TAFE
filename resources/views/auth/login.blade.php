@@ -34,6 +34,11 @@
                             </div>
                         </div>
                         <small class="text-muted" style="margin-bottom:30px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, enim.</small><br>
+                        @if (session('errors'))
+                            <div class="alert alert-danger w-25" role="alert">
+                                {{ __('Data tidak ada di database') }}
+                            </div>
+                        @endif
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <input type="text" name="username" id="username" placeholder="Username"style="margin-top:30px;width:380px;height:40px;border:none;border-radius:5px;background-color:#F5F5F5;padding:0 20px;" required autocomplete="username" autofocus>

@@ -218,34 +218,34 @@
             }
         });
 
-        // socket.on('ultra',function(message){
-        //     // console.log(message);
-        //     senul = message;
-        //     console.log(senul);
-        //     addData(pirChart,[senul],senul);
-        // });
-        // socket.on('pir',function(message){
-        //     console.log(message);
-        //     var today = new Date();
-        //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //     if (message==1){
-        //         addData(pirChart,time,message);
-        //     }
-        // });
-        
-        setInterval(function(){ 
-            senul = Math.floor((Math.random()*2));
+        socket.on('ultra',function(message){
+            // console.log(message);
+            senul = message;
             console.log(senul);
+            addData(pirChart,[senul],senul);
+        });
+        socket.on('pir',function(message){
+            console.log(message);
             var today = new Date();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            if (senul==1){
-                if (time==time&& senul!=0){
-                    addData(pirChart,time,senul);
-
-                }
+            if (message==1){
+                addData(pirChart,time,message);
             }
+        });
+        
+        // setInterval(function(){ 
+        //     senul = Math.floor((Math.random()*2));
+        //     console.log(senul);
+        //     var today = new Date();
+        //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //     if (senul==1){
+        //         if (time==time&& senul!=0){
+        //             addData(pirChart,time,senul);
 
-        }, 1000);
+        //         }
+        //     }
+
+        // }, 1000);
         
         var ctx = document.getElementById('linechart').getContext('2d');
         var pirChart = new Chart(ctx, {

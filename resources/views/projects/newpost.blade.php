@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <h5>Due</h5>
-                <input type="date" class="form-control" name="due" required>
+                <input type="date" class="form-control" name="due">
             </div>
             <button type="submit" class="btn btn-primary float-right mr-4">Save</button>
             <button type="reset" class="btn btn-primary float-right mr-2">Clear</button>
