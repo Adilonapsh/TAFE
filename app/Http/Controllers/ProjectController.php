@@ -19,7 +19,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.newpost');
+        $user = Auth::user();
+        return view('projects.newpost', compact('user'));
     }
 
     /**

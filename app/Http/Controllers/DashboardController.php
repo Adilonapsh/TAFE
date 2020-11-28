@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projectss;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -21,8 +22,9 @@ class DashboardController extends Controller
         $OOS = Projectss::all()->where('status', 'Out Off Schedule')->count();
         $posts = Projectss::all();
         $ids = Projectss::all();
+        $user = Auth::user();
 
-        return view('dashboard.dashboard', compact('tproject', 'complete', 'onprog', 'OOS', 'posts'));
+        return view('dashboard.dashboard', compact('user', 'tproject', 'complete', 'onprog', 'OOS', 'posts'));
     }
 
     /**

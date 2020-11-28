@@ -11,9 +11,10 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
+    protected $table = 'users';
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable.a
      *
      * @var array
      */
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'profile_picture',
     ];
 
     /**

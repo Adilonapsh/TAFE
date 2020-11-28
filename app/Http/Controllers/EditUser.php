@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CCTV;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class VideoController extends Controller
+class EditUser extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $cuser = CCTV::all()->where('cctv_owner', Auth::user()->name,);
         $user = Auth::user();
-        return view('cctv.video', compact('cuser', 'user'));
+        return view('auth.edituser', compact('user'));
     }
 
     /**
@@ -84,5 +83,22 @@ class VideoController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function updateavatar(Request $request)
+    {
+        // $request->validate([
+        //     'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        $user = Auth::user();
+
+        $avatarName = $user->id . '_avatar' . time() . '.' . $request->photo->getClientOriginalExtension();
+
+        $request->photo->storeAs('avatars', $avatarName);
+
+        $user->avatar = $avatarName;
+        $user->save();
+
+        dd($avatarName);
+        // return back()->with('success', 'You have successfully upload image.');
     }
 }

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ asset("plugins/fontawesome5pro/css/all.css") }}">
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('/plugins/bootstrap/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset("js/aos.js") }}"></script>
 
 </head>
@@ -41,6 +41,9 @@
                       <a id="navbarDropdown nav-link" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} </a>
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/profile">
+                          Profile
+                          </a>
                           <a class="dropdown-item" href="#"onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
                           Logout 

@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-5">
-                <img src="{{ asset('Assets/Images/Login_element.svg') }}" style="margin-top: -20px; margin-left: -30px; display:fixed;" width="460"  >
+                <img src="{{ asset('Assets/Images/Login_element.svg') }}" style="margin-top: -20px; margin-left: -30px; display:fixed; img-fluid" width="463"  >
                 <div class="welcomeback" style="margin-top: -450px; margin-left: 60px; color:white;">
                     <h1><b>Welcome Back !</b></h1>
                     <p class="mt3" style="width: 290px; text-align:center;margin-bottom: 30px;">Belum Punya Akun ?</p>
@@ -35,8 +35,8 @@
                         </div>
                         <small class="text-muted" style="margin-bottom:30px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, enim.</small><br>
                         @if (session('errors'))
-                            <div class="alert alert-danger w-25" role="alert">
-                                {{ __('Data tidak ada di database') }}
+                            <div class="alert alert-danger" style="margin-bottom:0px" role="alert">
+                                {{ __('Username atau password yang anda masukkan salah') }}
                             </div>
                         @endif
                         <form action="{{ route('login') }}" method="POST">

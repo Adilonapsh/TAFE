@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/cctv/update', [App\Http\Controllers\CCTVController::class, 'update']);
     Route::get('/cctv/delete/{id}', [App\Http\Controllers\CCTVController::class, 'destroy']);
     Route::get('/video', [App\Http\Controllers\VideoController::class, 'index']);
+    // Route::get('/user', [App\Http\Controllers\EditUser::class, 'index']);
+    Route::get('/profile', [App\Http\Controllers\EditUser::class, 'index']);
+    Route::post('/profile/upload', [App\Http\Controllers\EditUser::class, 'updateavatar']);
 });
 Route::view('coba', 'coba');
 // Route::view('cctv', 'cctv');

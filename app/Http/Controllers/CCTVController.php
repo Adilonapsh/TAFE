@@ -36,8 +36,8 @@ class CCTVController extends Controller
         $usrcctvid = DB::table('cctvs')->Where([
             ['cctv_owner', Auth::user()->name]
         ])->count();
-
-        return view('cctv', compact('cctvid', 'tcctv', 'cActive', 'cMaintenance', 'cNonactive', 'cuser', 'usrcctvid'));
+        $user = Auth::user();
+        return view('cctv', compact('user', 'cctvid', 'tcctv', 'cActive', 'cMaintenance', 'cNonactive', 'cuser', 'usrcctvid'));
     }
 
     /**

@@ -6,9 +6,16 @@
         <hr>
     </div>
     <div class="row vids p-4"></div>
-        
-</>
+</div>
+<!-- Large modal -->
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <video src="http://192.168.10.49:8080/v/Adilonapsh_2020-11-22_19-50.mkv">
+    </div>
+  </div>
+</div>
     
 @endsection
 
@@ -29,7 +36,7 @@
                     var sikep = root[i]+'t/';
                     $.getJSON(root[i]+"list_videos", function(data) {
                         for(s=0;s<data.length;s++){
-                            $('.vids').append('<div class="col-3"><a href="'+sivid+data[s].name+'"><img src="'+sikep+data[s].name+'" class="img-fluid" alt="">'+'<p class="text-center">'+data[s].name+'</p></a></div>');
+                            $('.vids').append('<div class="col-3"><a href="'+sivid+data[s].name+'" class="passdata" id="'+data[s].name+'" data-toggle="modal" data-target=".bd-example-modal-lg" ><img src="'+sikep+data[s].name+'" class="img-fluid" alt="">'+'<p class="text-center">'+data[s].name+'</p></a></div>');
                         }
                         console.log("dones");
                     });
@@ -39,13 +46,17 @@
         }
 
         getvideos();
+        $(".passdata").on('click',function() {
+           var idss= $(".passdata").id();
+            console.log(idss);
+        });
         //     
         //     $.ajax({
-        //         type:'GET',
-        //         url:root[i]+'list_videos',
-        //         data:{ get_param:'value' },
-        //         dataType:'json',
-        //         success: function(data){
+                // type:'GET',
+                // url:root[i]+'list_videos',
+                // data:{ get_param:'value' },
+                // dataType:'json',
+                // success: function(data){
             //             for(s=0;s<data.length;s++){
         //                 var sivid = root[i]+'v/';
         //                 var sikep = root[i]+'t/';
@@ -61,30 +72,4 @@
         // console.log(root);
         </script>
 @endsection
-CREATE TABLE public.ippt_non_koordinat
-(
-    tgl_sk date,
-    no_resi character varying,
-    tahun real,
-    bulan numeric(20,0),
-    lokasi_izin_jalan character varying,
-    lokasi_izin_kec character varying,
-    lokasi_izin_kel character varying,
-    tgl_daftar date,
-    nama_pemohon character varying,
-    alamat_pemohon character varying,
-    no_surat_tanah character varying(100),
-    peruntukan character varying(200),
-    jenis_peruntukan character varying(200),
-    kode character varying(200),
-    funsi_bangunan character varying(100),
-    luas_tanah character varying(20),
-    gsb character varying(20),
-    gss character varying(20),
-    kdb character varying(100),
-    jumlah_lantai character varying(20),
-    kdb_mak character varying(20),
-    ippt_klb_max character varying(20),
-    x double precision,
-    y double precision
-)
+
