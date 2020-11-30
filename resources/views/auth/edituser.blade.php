@@ -20,19 +20,19 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" class="form-control w-100" placeholder="Masukkan Nama" value="{{ $user->name }}" name="" id="">
+                            <input type="text" class="form-control w-100" placeholder="Masukkan Nama" value="{{ $user->name }}" name="">
                         </div>
                         <div class="form-group">
                             <label for="">Alamat Lengkap</label>
-                            <input type="text" class="form-control w-100" placeholder="Masukkan Alamat" value="{{ $user->alamat }}"  name="" id="">
+                            <input type="text" class="form-control w-100" placeholder="Masukkan Alamat" value="{{ $user->alamat }}"  name="">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="email" class="form-control w-100" placeholder="Masukkan Email" value="{{ $user->email }}"  name="" id="">
+                            <input type="email" class="form-control w-100" placeholder="Masukkan Email" value="{{ $user->email }}"  name="" >
                         </div>
                         <div class="form-group">
                             <label for="">No Telepon</label>
-                            <input type="text" class="form-control w-100" placeholder="Masukkan Nomor Telepon" value="{{ $user->name }}"  name="" id="">
+                            <input type="text" class="form-control w-100" placeholder="Masukkan Nomor Telepon" value="{{ $user->name }}"  name="">
                         </div>
                 </div>
             </div>
@@ -40,15 +40,15 @@
                 <div class="mr-4">
                         <div class="form-group">
                             <label for="">Current Password</label>
-                            <input type="password" class="form-control w-100" placeholder="Masukkan Password Lama" name="" id="">
+                            <input type="password" class="form-control w-100" placeholder="Masukkan Password Lama" name="">
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input type="password" class="form-control w-100" placeholder="Masukkan Password Baru" name=""  id="">
+                            <input type="password" class="form-control w-100" placeholder="Masukkan Password Baru" name="" >
                         </div>
                         <div class="form-group">
                             <label for="">Password Konfirmasi</label>
-                            <input type="password" class="form-control w-100" placeholder="Masukkan Ulang Password" name="" id="">
+                            <input type="password" class="form-control w-100" placeholder="Masukkan Ulang Password" name="">
                         </div>
                         <button class="btn btn-primary float-right">Save Changes</button>
                     </form>
@@ -146,7 +146,6 @@
                     processData: false,
                     contentType: false,
                     success : function(data){
-                        alert('Data Berhasil di Kirim');
                     }
                 });
                 //Menutup Popup Modal

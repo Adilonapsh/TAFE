@@ -40,7 +40,7 @@ var status = {};
 // });
 
 $(document).ready(function() {
-    
+    callajax();
     try{
         for(i=0;i<100;i++){
             var k = 'ctv';
@@ -132,8 +132,7 @@ $('.bar').on('input', function () {
     $.ajax(root+'/settings/night_vision_gain?set='+val4);
 });
  
-
-var callajax=function(){
+function callajax(){
     $.ajax(root+'status.json?show_avail=1')
         .done(function (data) {
             config = data;

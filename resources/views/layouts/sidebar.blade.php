@@ -13,21 +13,18 @@
         <img src="storage/avatars/{{ $user->avatar }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="{{ route('logout') }}" id="Users" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
+        <a href="/profile" id="Users"">
           {{ Auth::user()->name }}
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
-        </form>
+        </form> --}}
       </div>
     </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link {{ Request::is('dashboard*')? 'active': '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -67,6 +64,16 @@
               </a>
             </li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+            <i class="nav-icon fad fa-sign-out-alt"></i>
+            <p class="text">Logout</p>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </a>
         </li>
       </ul>
     </nav>
