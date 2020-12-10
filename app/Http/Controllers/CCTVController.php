@@ -89,11 +89,9 @@ class CCTVController extends Controller
      */
     public function edit($id)
     {
-
         $CCTV = DB::table('cctvs')->where('id', $id)->first();
         // dd($CCTVS);
         $user = Auth::user();
-
         return view('cctv.edit', compact('user', 'CCTV'));
     }
 

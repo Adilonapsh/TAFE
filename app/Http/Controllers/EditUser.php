@@ -90,15 +90,11 @@ class EditUser extends Controller
         //     'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         // ]);
         $user = Auth::user();
-
         $avatarName = $user->id . '_avatar' . time() . '.' . $request->photo->getClientOriginalExtension();
-
         $request->photo->storeAs('avatars', $avatarName);
-
         $user->avatar = $avatarName;
         $user->save();
-
-        dd($avatarName);
-        // return back()->with('success', 'You have successfully upload image.');
+        // dd($avatarName);
+        return back()->with('success', 'You have successfully upload image.');
     }
 }

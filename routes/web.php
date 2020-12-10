@@ -47,7 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [App\Http\Controllers\EditUser::class, 'index']);
     Route::post('/profile/upload', [App\Http\Controllers\EditUser::class, 'updateavatar']);
 });
-Route::view('coba', 'settings');
+Route::view('coba', 'coba   ');
+Route::view('coba/setting', 'settings');
 // Route::view('cctv', 'cctv');
 Auth::routes();
 Route::get('/unch', function () {

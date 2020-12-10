@@ -12,49 +12,59 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public $successStatus = 200;
+
+    public function login()
     {
-        $creds = $request->only(['username', 'password']);
-        if (!$token = auth()->attempt($creds)) {
+        if (Auth::attempt(['username' => request('username'), 'password' => request('password')])) {
+            $user = Auth::user();
+            $success['token'] =  $user->createToken('nApp')->accessToken;
             return response()->json([
-                'success' => false,
-                'message' => 'Login failed',
-            ]);
+                'success' => true,
+                'token' => $success,
+                'user' => $user
+            ], $this->successStatus);
+        } else {
+            return response()->json(['error' => 'Unauthorised'], 401);
         }
-        $user = Auth::user();
-        $success =  $user->createToken('nApp')->accessToken;
-        return response()->json([
-            'success' => true,
-            'token' => $success,
-            'user' => Auth::user()
-        ]);
     }
+
     public function register(Request $request)
     {
-        $password  = Hash::make($request->password);
-        try {
-            User::create([
-                'name' => $request['name'],
-                'username' => $request['username'],
-                'email' => $request['email'],
-                'password' => $password,
-            ]);
-            return $this->login($request);
-        } catch (Exception $e) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $user = User::create($input);
+        $success['token'] =  $user->createToken('nApp')->accessToken;
+        $success['name'] =  $user->name;
+
+        return response()->json(['success' => $success], $this->successStatus);
+    }
+
+    public function logout(Request $request)
+    {
+        $logout = $request->user()->token()->revoke();
+        if ($logout) {
             return response()->json([
-                'success' => false,
-                'message' => '' . $e,
+                'message' => 'Successfully logged out'
             ]);
         }
     }
-    public function logout()
+
+    public function details()
     {
-        if (Auth::check()) {
-            Auth::user()->AauthAcessToken()->delete();
-        }
-        return response()->json([
-            'success' => true,
-            'message' => 'Logout Success',
-        ]);
+        $user = Auth::user();
+        return response()->json(['success' => $user], $this->successStatus);
     }
 }

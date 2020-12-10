@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adilonapsh</title>
-    <link rel="stylesheet" href="{{ asset("css/Style.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/aos.css") }}">
-    <link rel="stylesheet" href="{{ asset("plugins/fontawesome5pro/css/all.css") }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset("js/aos.js") }}"></script>
+        <link rel="stylesheet" href="{{ asset("css/Style.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/aos.css") }}">
+        <link rel="stylesheet" href="{{ asset("plugins/fontawesome5pro/css/all.css") }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset("js/aos.js") }}"></script>
     <style>
          .text12{
             font-size: 12px;

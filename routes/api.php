@@ -19,4 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('register', [App\Http\Controllers\Api\AuthController::class, 'register']);
-Route::post('logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('user/detail', [App\Http\Controllers\Api\AuthController::class, 'details']);
+    Route::post('logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
+    Route::post('project', [App\Http\Controllers\Api\PostController::class, 'project']);
+    Route::post('cctv', [App\Http\Controllers\Api\PostController::class, 'cctv']);
+});
