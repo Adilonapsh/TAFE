@@ -97,7 +97,7 @@ class ProjectController extends Controller
             'due' => $request->due,
             'updated_at' => $times,
         ]);
-        return redirect('/dashboard')->with('message', 'Project Updated ! ');
+        return redirect('/project')->with('message', 'Project Updated ! ');
     }
 
     /**
@@ -109,6 +109,18 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         DB::table('projects')->where('id', $id)->delete();
-        return redirect('/dashboard')->with('message', 'Project Deleted !');
+        return redirect('/project')->with('message', 'Project Deleted !');
+    }
+
+    public function showindex()
+    {
+        $tproject = Projectss::all()->count();
+        $complete = Projectss::all()->where('status', 'Complete')->count();
+        $onprog = Projectss::all()->where('status', 'On Progress')->count();
+        $OOS = Projectss::all()->where('status', 'Out Off Schedule')->count();
+        $posts = Projectss::all();
+        $ids = Projectss::all();
+        $user = Auth::user();
+        return view('projects.index', compact('user', 'tproject', 'complete', 'onprog', 'OOS', 'posts'));
     }
 }

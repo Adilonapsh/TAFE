@@ -20,9 +20,7 @@ Route::get('/', function () {
     return view('landingpage');
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('Nodemcu', function () {
-        return view('nodemcu');
-    })->name('nodemcu');
+    Route::get('nodemcu', [App\Http\Controllers\SocketController::class, 'index'])->name('nodemcu');
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('app', function () {
         return view('layouts.app');
@@ -30,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('socket', [App\Http\Controllers\SocketController::class, 'index']);
 
+    Route::get('project', [App\Http\Controllers\ProjectController::class, 'showindex']);
     Route::get('post', [App\Http\Controllers\ProjectController::class, 'index']);
     Route::post('post', [App\Http\Controllers\ProjectController::class, 'store']);
     Route::get('post/edit/{id}', [App\Http\Controllers\ProjectController::class, 'edit']);
@@ -47,7 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [App\Http\Controllers\EditUser::class, 'index']);
     Route::post('/profile/upload', [App\Http\Controllers\EditUser::class, 'updateavatar']);
 });
-Route::view('coba', 'coba   ');
+Route::view('coba', 'coba');
+Route::view('cobacctv', 'cobacctv');
 Route::view('coba/setting', 'settings');
 // Route::view('cctv', 'cctv');
 Auth::routes();

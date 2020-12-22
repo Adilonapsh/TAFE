@@ -36,7 +36,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item nav-link-style"><a href="#" class="nav-link">Home</a></li>
                     <li class="nav-item nav-link-style"><a href="/dashboard" class="nav-link">Dashboard</a></li>
-                    <li class="nav-item nav-link-style"><a href="#" class="nav-link">Nodemcu</a></li>
+                    <li class="nav-item nav-link-style"><a href="/nodemcu" class="nav-link">Nodemcu</a></li>
                     <li class="nav-item nav-link-style"><a href="#" class="nav-link">Blog</a></li>
                     @guest
                         <li class="nav-item nav-link-style"><a href="{{ route('login') }} " class="nav-link">Login</a></li>   

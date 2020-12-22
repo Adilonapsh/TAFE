@@ -33,7 +33,7 @@
                                 Twitter
                             </div>
                         </div>
-                        <small class="text-muted" style="margin-bottom:30px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, enim.</small><br>
+                        <small class="text-muted" style="margin-bottom:30px;">Silahkan Buat Akun Terlebih Dahulu Untuk Melanjutkan</small><br>
                         <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <input id="name" type="text" style="margin-bottom: 20px; margin-top:10px;" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>

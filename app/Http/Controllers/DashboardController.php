@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projectss;
+use App\Models\CCTV;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,8 +25,29 @@ class DashboardController extends Controller
         $posts = Projectss::all();
         $ids = Projectss::all();
         $user = Auth::user();
+        $tcctv = CCTV::all()->count();
+        $cActive = DB::table('cctvs')->Where([
+            ['cctv_owner', Auth::user()->name],
+            ['status', 'Active'],
+        ])->count();
+        $cMaintenance = DB::table('cctvs')->Where([
+            ['cctv_owner', Auth::user()->name],
+            ['status', 'Maintenance'],
+        ])->count();
+        $cNonactive = DB::table('cctvs')->Where([
+            ['cctv_owner', Auth::user()->name],
+            ['status', 'Non active'],
+        ])->count();
+        $cuser = CCTV::all()->where('cctv_owner', Auth::user()->name,);
+        $cctvid = DB::table('cctvs')->Where([
+            ['cctv_owner', Auth::user()->name]
+        ])->get();
+        $usrcctvid = DB::table('cctvs')->Where([
+            ['cctv_owner', Auth::user()->name]
+        ])->count();
+        $user = Auth::user();
 
-        return view('dashboard.dashboard', compact('user', 'tproject', 'complete', 'onprog', 'OOS', 'posts'));
+        return view('dashboard.dashboard', compact('user', 'tproject', 'complete', 'onprog', 'OOS', 'posts', 'cctvid', 'tcctv', 'cActive', 'cMaintenance', 'cNonactive', 'cuser', 'usrcctvid'));
     }
 
     /**

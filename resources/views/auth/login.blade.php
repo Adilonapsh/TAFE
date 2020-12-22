@@ -33,7 +33,7 @@
                                 Twitter
                             </div>
                         </div>
-                        <small class="text-muted" style="margin-bottom:30px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, enim.</small><br>
+                        <small class="text-muted" style="margin-bottom:30px;">Silahkan Login Untuk Melanjutkan</small><br>
                         @if (session('errors'))
                             <div class="alert alert-danger" style="margin-bottom:0px" role="alert">
                                 {{ __('Username atau password yang anda masukkan salah') }}

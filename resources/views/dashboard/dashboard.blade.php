@@ -46,8 +46,7 @@
         ::-webkit-scrollbar-corner {
         background: transparent;
         }
-
-</style>
+    </style>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 @endsection
 @section('content')
@@ -59,7 +58,7 @@
                 <div class="card bg-white text-white" style="width: 25rem;height:8rem;">
                     <a href="#">
                         <div class="card-body ml-2">
-                            <img src="{{ asset('Assets/Images/Asset_1.png') }}" width="20" height="20" alt="" class="float-right">
+                            <i class="fas fa-project-diagram nav-icon float-right"></i>
                             <h3 class="mt-4" style="margin-bottom: -2px">{{ $tproject }}</h3>
                             <p class="card-text">Projects</p>
                             {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
@@ -71,9 +70,9 @@
                 <div class="card bg-teal text-white" style="width: 25rem;height:8rem;">
                     <a href="#">
                         <div class="card-body ml-2">
-                            <img src="{{ asset('Assets/Images/Asset_1.png') }}" width="20" height="20" alt="" class="float-right">
-                            <h3 class="mt-4" style="margin-bottom: -2px">10</h3>
-                            <p class="card-text">Absen</p>
+                            <i class="fas fa-video nav-icon float-right"></i>
+                            <h3 class="mt-4" style="margin-bottom: -2px">{{ $usrcctvid }}</h3>
+                            <p class="card-text">Cameras</p>
                             {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                         </div>
                     </a>
@@ -105,7 +104,7 @@
             </div>
         </div>
     {{-- Projects Pending --}}
-    <h4 class="mb-3">Projects</h4>
+    {{-- <h4 class="mb-3">Projects</h4> --}}
     <div class="Penpro bg-white borad mb-2 border-bottoms-0">
         <div class="row">
             <div class="col-12 pl-4 pr-4">
@@ -121,8 +120,8 @@
                             </svg>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="/project">Show All Projects</a>
+                            <a class="dropdown-item" href="#">Delete All Complete Projects</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
@@ -155,48 +154,67 @@
             </div>
         </div>
     </div>
-    <div class="PenPro bg-white borad border-tops-0">
-        <div class="row pl-4 pr-4 pb-3">
-            @if (\Session::has('message'))
-                <strong>{!! \Session::get('message') !!}</strong>
-            @endif
-            {{-- Begin Of Card --}}
-            <div class="col-lg-12 pt-3 ">
-                @foreach ($posts as $post)
-                <div class="row bg-white shadow-sm p-3 mt-3 borad border-left border-success align-items-center">
-                    <div class="col-sm-6 col-lg-7">
-                        <div class="col-12"><h4 class="border-bottom">{{ $post->project_name }}</h4></div>
-                        <div class="col-12"><p id="P_PB{{ $post->id }}">{{ $post->project_body }}</p></div>
+    {{-- <h4 class="mb-3">CCTV</h4> --}}
+    <div class="Penpro bg-white borad mb-2 border-bottoms-0">
+        <div class="row">
+            <div class="col-12 pl-4 pr-4">
+                <div class="row p-lg-2 p-3  align-items-center border-bottom">
+                    <div class="col-7">
+                        <span>CCTV Overview</span>
                     </div>
-                    <div class="col-sm-2 col-lg-2 mb-3"><!--mt-2-->
-                        <div class="row justify-content-center"><b>Status</b></div>
-                        <div class="row justify-content-center"><span class="btn @if($post->status == 'Complete') btn-success @elseif($post->status == 'Out Off Schedule') btn-danger @elseif($post->status == 'On Progress') btn-warning @endif">{{ $post->status }}</span></div>
+                    <div class="col-5 text-right align-items-center">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#Createmodal">Create</button>
+                        <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/cctv">Show All Cameras</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
-                    <div class="col-sm-12 col-lg-3  text-right  "> <!--mt-lg-4-->
-
-                        {{-- <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown button
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div> --}}
-                        <a class="btn btn-primary" href="post/edit/{{ $post->id }}">Edit</a>
-                        <a class="btn btn-primary" href="#">View</a>
-                        <a class="btn btn-primary" href="post/delete/{{ $post->id }}" onclick="return confirm('Anda Yakin ?');">Delete</a>
-                    </div>
+                    {{-- <div class="col-3 text-right align-items-center">
+                        <a class="btn btn-primary" href="#">Make</a>
+                        <a class="" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg></a>
+                    </div> --}}
                 </div>
-                @endforeach
+                <div class="row pl-4 pr-4 justify-content-center text-center">
+                    <div class="col-3 pt-2 border-right borad ">
+                        <h3>{{ $usrcctvid }}</h3>
+                        <p class="text-muted">Total CCTV</p>
+                    </div>
+                    <div class="col-3 pt-2 border-right borad">
+                        <h3>{{ $cActive }}</h3>
+                        <p class="text-muted">Active</p>
+                    </div>
+                    <div class="col-3 pt-2 border-right borad">
+                        <h3>{{ $cMaintenance }}</h3>
+                        <p class="text-muted">Maintenance</p>
+                    </div>
+                    <div class="col-3 pt-2">
+                        <h3>{{ $cNonactive }}</h3>
+                        <p class="text-muted">Nonactive</p>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
+    {{-- <div class="container">
         <canvas id="linechart" width="500" height="200"></canvas>
     </div>
-    <div id="linecharts"></div>
+    <div id="linecharts"></div> --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                awdjlwdkj
+            </div>
+        </div>
+    </div>
     </div>
 @endsection
 
