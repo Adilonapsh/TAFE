@@ -113,14 +113,14 @@
                         <span>Project Overview</span>
                     </div>
                     <div class="col-5 text-right align-items-center">
-                        <a href="/post" class="btn btn-primary">Create</a>
+                        <a href="{{ route('viewnewpost') }}" class="btn btn-primary">Create</a>
                         <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                             </svg>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/project">Show All Projects</a>
+                            <a class="dropdown-item" href="{{ route('project') }}">Show All Projects</a>
                             <a class="dropdown-item" href="#">Delete All Complete Projects</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
@@ -163,14 +163,14 @@
                         <span>CCTV Overview</span>
                     </div>
                     <div class="col-5 text-right align-items-center">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#Createmodal">Create</button>
+                        <a class="btn btn-primary" href="{{ route('viewnewcctv') }}">Create</a>
                         <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                             </svg>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/cctv">Show All Cameras</a>
+                            <a class="dropdown-item" href="{{ route('viewcctv') }}">Show All Cameras</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>

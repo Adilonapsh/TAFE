@@ -1,8 +1,9 @@
 
-var root = "";
+var root = "http://192.168.0.105:8080/";
 var takefoto = $('#takefoto');
 var camsel = $('#cam_selection');
-var flashcb = $('#flashcb');
+var flashcb = $('#flashbtn');
+var nvcb = $('nightvisioncb');
 var record = $('#Rec_btn');
 var stoprec = $('#Stoprec_btn');
 var ctv = [];
@@ -50,6 +51,7 @@ $(document).ready(function() {
             var replace = ctvsrc.replace('video',''); //Replace url dari 192.168.0.0/video ke 192.168.0.0/
             ctv[i] = replace; //simpan url replace ke replace array
             id[i] = '#'+ids; //simpan id ke id id array
+            
 
             // for (i in ctv ) {
             //     camclick[i] = $(id[i]).click(function(){
@@ -61,7 +63,6 @@ $(document).ready(function() {
             // }
             console.log("ctv"+i+" = "+ ctv[i]);
             console.log(id[i]);
-
             // console.log(camclick);
             
             if(typeof ctvsrc === 'undefined'){ //jika ctv tidak ada / undifined maka loop berhenti
@@ -74,7 +75,7 @@ $(document).ready(function() {
     }
 
     for(i in id){ 
-        $(id[i]).click(function(){ //jika id di click maka  fugis ini jalan
+        $(id[i]).click(function(){ //jika id di click maka  fungsi ini jalan
             wreck = $('#'+this.id).find('img').attr('src');
             replace = wreck.replace('video','');
             root = replace; //ganti URL ke root
@@ -83,21 +84,45 @@ $(document).ready(function() {
             console.log('Clicked'+this.id);
             console.log(root);
             callajax();
+            // console.log(ctv[1]);
         });
     }
+    //Night Vision 
+    nvcb.click(function(){
+        if (nvcb.is(":checked")){
+            $.ajax(root+'/settings/night_vision?set=on');
+            console.log(nvcb);
+        }else{
+            $.ajax(root+'/settings/night_vision?set=off');
+            console.log(nvcb);
+        }
+    });
     //flash
+    var flashes = false;
     flashcb.click(function() {
-        if (flashcb.is(":checked")) {
-        $.ajax(root+'/enabletorch')
+        if (flashes) {
+            $.ajax(root+'/enabletorch');
+            flashes=!flashes;
         } else {
-        $.ajax(root+'/disabletorch')
+            $.ajax(root+'/disabletorch');
+            flashes=!flashes;
+
         }
     });
     
     //record
     record.click(function(){
+        // $.ajax(root+'status.json?show_avail=1')
+        //     .done(function(data) {
+        //         console.log(data["video_status"]["mode"]);
+        //         if (data["video_status"]["mode"])=="manual")
+        //     })
+        //     .fail(function (xhr, textStatus, errorThrown) {
+        //         console.log("error occured");
+        // });
         $.ajax(root+'/startvideo?force=1&tag=Adilonapsh');
     });
+    
     stoprec.click(function(){
         $.ajax(root+'/stopvideo?force=1');
     });
@@ -133,12 +158,81 @@ $('.bar').on('input', function () {
 });
  
 function callajax(){
-    $.ajax(root+'status.json?show_avail=1')
-        .done(function (data) {
-            config = data;
-        })
-        .fail(function (xhr, textStatus, errorThrown) {
-            console.log("error occured");
+    for(s=0;s<ctv.length;s++){
+        $.ajax(ctv[s]+'status.json?show_avail=1')
+            .done(function (data) {
+                config[s] = [data];
+            })
+            .fail(function (xhr, textStatus, errorThrown) {
+                console.log("error occured");
         });
-        console.log(config);
+    }
+    console.log(config);
 }
+
+
+
+
+// Code For Socket IO
+
+var u = 0;
+var p = false;
+var r1 = false;
+var r2 = false;
+var r3 = false;
+var start = 0;
+var stop = 0;
+var socket = io.connect('http://localhost:2001');
+socket.on('ultra',function(message){
+    // console.log(message);
+    u = message;
+});
+socket.on('pir',function(message){
+    // console.log(message);
+    p = message;
+    if(u>=41 && p==true){ //Jika Pintu dibuka dan ada pergerakan Record
+        if (start==0){
+            // $.ajax(root+'/startvideo?force=1&tag=Automatic_Record');
+            console.log("Record Started");
+            start+=1;
+            stop=0;
+        }else{
+            console.log("Sudah Dimulai");
+        }
+    }
+    else{
+        if (stop==0){
+            // $.ajax(root+'/startvideo?force=1&tag=Automatic_Record');
+            console.log("Record Stopped");
+            start=0;
+            stop+=1;
+        }else{
+            console.log("Sudah Distop");
+        }
+    }
+});
+socket.on('relay1',function(message){
+    // console.log(message);
+    r1 = message;
+});
+socket.on('relay2',function(message){
+    // console.log(message);
+    r2 = message;
+});
+socket.on('relay3',function(message){
+    // console.log(message);
+    r3 = message;
+});
+
+
+// function automaticrecord(){
+    // if(u>=41 && p==true){
+    //     // $.ajax(root+'/startvideo?force=1&tag=Automatic_Record');
+    //     console.log("Record Started");
+    // }
+    // else if(u<=40 && p==false){
+    //     // $.ajax(root+'/startvideo?force=1&tag=Automatic_Record');
+    //     console.log("Record Stopwwwped");
+    // }
+// }
+// automaticrecord();

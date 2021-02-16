@@ -40,6 +40,7 @@
                     @foreach($cuser as $cctv)
                     <div class="col-xl-3">
                         <small class="m-0 ">{{ $cctv->cctv_name }}</small>
+                        <small class="m-0 float-right" class="recs" style="display:none;" id="recid{{ $cctv->id }}">Rec</small>
                         <a href="#" id="cctv{{ $cctv->id }}" class="cctvclass"><img src="{{ $cctv->cctv_ip }}" onerror="this.src='{{ asset('img/No-signal.jpg') }}';" class="img-fluid mx-auto d-block" width="100%"></a>
                     </div>
                     @endforeach
@@ -112,7 +113,7 @@
                             </div>
                             <div class="col-sm-12 col-lg-3 text-right  "> <!--mt-lg-4-->
                                 <a class="btn btn-primary edits" href="/cctv/edit/{{ $cctv->id }}">Edit</a><!--data-target="#editmodal" data-toggle="modal"-->
-                                <a class="btn btn-primary" href="#">View</a>
+                                <a class="btn btn-primary" href="{{ $cctv->cctv_ip }}">View</a>
                                 <a class="btn btn-primary" href="/cctv/delete/{{ $cctv->id }}" onclick="return confirm('Anda Yakin ?');">Delete</a>
                             </div>
                         </div>
@@ -201,7 +202,7 @@
             <div class="row align-items-center" style="height: 90vh;">
                 <div class="col text-center">
                     <h2 class="mb-3 ">Connect devices</h2>
-                    <p class="mb-4 wei">Connect your camera or video recorder to {{ config('app.name') }} cloud and watch videos in the app.</p>
+                    <p class="mb-4 wei">Connect your camera or video recorder to {{ config('app.name') }} cloud and watch videos in the web.</p>
                     <button class="btn btn-primary p-2 mb-3" data-toggle="modal" data-target="#Createmodal">Connect Devices</button>
                     <hr class="w-75">
                     <div class="row justify-content-center">
@@ -291,10 +292,16 @@
     </div>
 </div>
 <div class="row mb-2 mt-2">
+    <div class="col-4" >
+        <p id="flashbtn" class="btn btn-sm btn-primary">
+            {{-- <input id="flashcb" type="checkbox" > --}}
+            Flash
+        </p>
+    </div>
     <div class="col-2 p-0">
-        <label id="flashbtn" class="btn btn-sm btn-primary">
-            <input id="flashcb" type="checkbox" hidden>Flash
-        </label>
+        <p id="nightvisionbtn" class="btn btn-sm btn-primary" style="width: 100px">
+            <input id="nightvisioncb" type="checkbox" hidden>Night Vision
+        </p>
     </div>
 </div>
 <hr class="m-2">
@@ -369,5 +376,6 @@
 @section('script')
     <script>
     </script>
+    <script src="{{ asset('plugins/socket.io-client/dist/socket.io.js') }}"></script>
     <script src="{{ asset('js/Noreplyao.js') }}"></script>
 @endsection

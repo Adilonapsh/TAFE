@@ -47,7 +47,8 @@ class CCTVController extends Controller
      */
     public function create()
     {
-        return view('cctv.create');
+        $user = Auth::user();
+        return view('cctv.create', compact('user'));
     }
 
     /**

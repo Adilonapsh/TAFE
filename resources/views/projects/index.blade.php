@@ -27,7 +27,7 @@
                         <span>Project Overview</span>
                     </div>
                     <div class="col-5 text-right align-items-center">
-                        <a href="/post" class="btn btn-primary">Create</a>
+                        <a href="{{ route('viewnewpost') }}" class="btn btn-primary">Create</a>
                         <a class="dropdown align-items-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>

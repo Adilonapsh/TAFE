@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid p-4">
-        <form action="/cctv/create" method="POST">
+        <form action="{{ route('postnewpost') }}" method="POST">
             @csrf
             <div class="form-group">
                 <h5>CCTV Name</h5>

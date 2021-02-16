@@ -7,7 +7,7 @@
     <div class="container bg-white vh-100">
         <div class="row w-100">
             <div class="col-12 text-center">
-                <label id="img_change"><img src="storage/avatars/{{ $user->avatar }}" id="images" class=" mt-5 mb-3 img-fluid shadow rounded-circle" style="width: 200;height:200;"></label>
+                <label id="img_change"><img src="{{ asset('storage/avatars/') }}/{{ $user->avatar }}" id="images" class=" mt-5 mb-3 img-fluid shadow rounded-circle" style="width: 200;height:200;"></label>
                 <input type="file" id="pp_input" style="display: none;" class="form-control-file w-100" aria-describedby="fileHelp" name="photo" >
                 <h2 class="mb-3">{{ $user->name }}</h2>
                 <hr class="w-75" >
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-6 border-right">
                 <div class="ml-4">
-                    <form action="profile/upload" method="POST">
+                    <form action="{{ route('updateprofile') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>

@@ -18,33 +18,33 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 
 Route::get('/', function () {
     return view('landingpage');
-});
+})->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('nodemcu', [App\Http\Controllers\SocketController::class, 'index'])->name('nodemcu');
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('app', function () {
         return view('layouts.app');
     });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('socket', [App\Http\Controllers\SocketController::class, 'index']);
 
-    Route::get('project', [App\Http\Controllers\ProjectController::class, 'showindex']);
-    Route::get('post', [App\Http\Controllers\ProjectController::class, 'index']);
-    Route::post('post', [App\Http\Controllers\ProjectController::class, 'store']);
-    Route::get('post/edit/{id}', [App\Http\Controllers\ProjectController::class, 'edit']);
-    Route::post('post/update', [App\Http\Controllers\ProjectController::class, 'update']);
-    Route::get('post/delete/{id}', [App\Http\Controllers\ProjectController::class, 'destroy']);
+    Route::get('project', [App\Http\Controllers\ProjectController::class, 'showindex'])->name('project');
+    Route::get('post', [App\Http\Controllers\ProjectController::class, 'index'])->name('viewnewpost');
+    Route::post('post', [App\Http\Controllers\ProjectController::class, 'store'])->name('postnewpost');
+    Route::get('post/edit/{id}', [App\Http\Controllers\ProjectController::class, 'edit'])->name('editpost');
+    Route::post('post/update', [App\Http\Controllers\ProjectController::class, 'update'])->name('updatepost');
+    Route::get('post/delete/{id}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('deletepost');
 
-    Route::get('/cctv', [App\Http\Controllers\CCTVController::class, 'index']);
-    Route::get('/cctv/create', [App\Http\Controllers\CCTVController::class, 'create']);
-    Route::post('/cctv/create', [App\Http\Controllers\CCTVController::class, 'store']);
-    Route::get('/cctv/edit/{id}', [App\Http\Controllers\CCTVController::class, 'edit']);
-    Route::post('/cctv/update', [App\Http\Controllers\CCTVController::class, 'update']);
-    Route::get('/cctv/delete/{id}', [App\Http\Controllers\CCTVController::class, 'destroy']);
-    Route::get('/video', [App\Http\Controllers\VideoController::class, 'index']);
+    Route::get('/cctv', [App\Http\Controllers\CCTVController::class, 'index'])->name('viewcctv');
+    Route::get('/cctv/create', [App\Http\Controllers\CCTVController::class, 'create'])->name('viewnewcctv');
+    Route::post('/cctv/create', [App\Http\Controllers\CCTVController::class, 'store'])->name('postnewcctv');
+    Route::get('/cctv/edit/{id}', [App\Http\Controllers\CCTVController::class, 'edit'])->name('editcctv');
+    Route::post('/cctv/update', [App\Http\Controllers\CCTVController::class, 'update'])->name('updatecctv');
+    Route::get('/cctv/delete/{id}', [App\Http\Controllers\CCTVController::class, 'destroy'])->name('deletecctv');
+    Route::get('/video', [App\Http\Controllers\VideoController::class, 'index'])->name('viewvideo');
     // Route::get('/user', [App\Http\Controllers\EditUser::class, 'index']);
-    Route::get('/profile', [App\Http\Controllers\EditUser::class, 'index']);
-    Route::post('/profile/upload', [App\Http\Controllers\EditUser::class, 'updateavatar']);
+    Route::get('/profile', [App\Http\Controllers\EditUser::class, 'index'])->name('viewprofile');
+    Route::post('/profile/upload', [App\Http\Controllers\EditUser::class, 'updateavatar'])->name('updateprofile');
 });
 Route::view('coba', 'coba');
 Route::view('cobacctv', 'cobacctv');

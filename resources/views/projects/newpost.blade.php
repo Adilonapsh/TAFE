@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid p-4">
-        <form action="/post" method="POST">
+        <form action="{{ route('postnewpost') }}" method="POST">
             @csrf
             <div class="form-group">
                 <h5>Project Name</h5>

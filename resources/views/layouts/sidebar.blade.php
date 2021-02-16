@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-no-expand sidebar-light-primary">
   <!-- Brand Logo -->
   <a href="/" class="brand-link navbar-primary">
-    <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <b class="brand-text text-white">{{ config('app.name') }}</b>
   </a>
 
@@ -10,7 +10,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="storage/avatars/{{ $user->avatar }}" class="img-circle elevation-2" alt="User Image">
+        <img src="{{ asset('storage/avatars') }}/{{ $user->avatar }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="/profile" id="Users"">
@@ -35,9 +35,9 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('dashboard') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v1</p>
+                <p>Dashboard</p>
               </a>
             </li>
           </ul>
@@ -61,6 +61,23 @@
               <a href="/video" class="nav-link {{ Request::is('cctv*')? 'active': ''}}">
                 <i class="fas fa-film nav-icon"></i>
                 <p>Video</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link {{ Request::is('nodemcu*')? 'active': '' }}">
+            <i class="nav-icon fab fa-think-peaks"></i>
+            <p>
+              <i class="right fas fa-angle-left"></i>
+              Nodemcu
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('nodemcu') }}" class="nav-link">
+                <i class="nav-icon fad fa-atom"></i>
+                <p>Nodes</p>
               </a>
             </li>
           </ul>

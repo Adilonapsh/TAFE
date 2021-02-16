@@ -7,7 +7,7 @@
     </div>
     <div class="row vids p-4"></div>
 </div>
-<!-- Large modal -->
+<!-- Large modal
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -15,7 +15,7 @@
       <video src="http://192.168.10.49:8080/v/Adilonapsh_2020-11-22_19-50.mkv">
     </div>
   </div>
-</div>
+</div> -->
     
 @endsection
 
@@ -36,7 +36,7 @@
                     var sikep = root[i]+'t/';
                     $.getJSON(root[i]+"list_videos", function(data) {
                         for(s=0;s<data.length;s++){
-                            $('.vids').append('<div class="col-3"><a href="'+sivid+data[s].name+'" class="passdata" id="'+data[s].name+'" data-toggle="modal" data-target=".bd-example-modal-lg" ><img src="'+sikep+data[s].name+'" class="img-fluid" alt="">'+'<p class="text-center">'+data[s].name+'</p></a></div>');
+                            $('.vids').append('<div class="col-3"><a href="'+sivid+data[s].name+'" class="passdata" id="'+data[s].name+'" data-toggle="modal" data-target=".bd-example-modal-lg" ><img src="'+sikep+data[s].name+'" class="img-fluid" alt="">'+'<p class="text-center m-0">'+data[s].name+'</p></a></div>');
                         }
                         console.log("dones");
                     });

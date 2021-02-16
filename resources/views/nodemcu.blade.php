@@ -80,7 +80,7 @@
         });
         socket.on('pir',function(message){
             console.log(message);
-            if (message){
+            if (message==true){
                 pir.html("Movement Detected");
             }else{
                 pir.html("No Movement");

@@ -2,7 +2,7 @@
 @section('content')
     
     <div class="container-fluid p-4">
-        <form action="/post/update" method="POST">
+        <form action="{{ route('updatepost') }}" method="POST">
             @csrf
             <input type="hidden" value="{{ $projects->id }}" name="id">
             <div class="form-group">
