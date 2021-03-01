@@ -111,9 +111,12 @@
         <div class="col-lg-5 d-flex align-items-center mb-5">
           <img src="{{ asset("img/counts-img.svg") }}" class="img-fluid img-size-64" alt="" data-aos="fade-right" data-aos-delay="200">
         </div>
-        <div class="col-lg-4 pl-5 pt-lg-5">
-          <h3 data-aos="fade-left" data-aos-delay="200">Be The Firts User.</h3>
-          <p data-aos="fade-left" data-aos-delay="300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus impedit placeat, quos saepe facilis soluta ex! Cupiditate non modi dicta, minima, excepturi dolor ex tenetur sapiente nobis quia iste. Enim.</p>
+        <div class="col-lg-6 pl-5 pt-lg-2">
+          <h3 data-aos="fade-left" data-aos-delay="200">Protecting The Everyday</h3>
+          <p data-aos="fade-left" data-aos-delay="300">
+            At {{ config("app.name") }}, we believe that, in order to create and maintain thriving public spaces, groups, including urban planners, city managers, security experts, enterprise executives, and community leaders, must work together to achieve true public safety. And a cornerstone of this open and collaborative approach is the development and implementation of multipurpose technology.
+            Forward-thinking technology can provide a platform that facilitates communication and collaboration to improve public safety and support the advancement of the city and its interests. Our tools and solutions extend beyond physical security to contribute to the betterment of the daily lives of citizens.
+            </p>
         </div>
       </div> 
     </div>

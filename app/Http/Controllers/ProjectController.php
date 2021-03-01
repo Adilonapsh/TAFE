@@ -76,7 +76,8 @@ class ProjectController extends Controller
     {
         $projects = DB::table('projects')->where('id', $id)->first();
         // dd($projects);
-        return view('projects.edit', compact('projects'));
+        $user = Auth::user();
+        return view('projects.edit', compact('projects','user'));
     }
 
     /**
@@ -97,7 +98,7 @@ class ProjectController extends Controller
             'due' => $request->due,
             'updated_at' => $times,
         ]);
-        return redirect('/project')->with('message', 'Project Updated ! ');
+        return redirect('/project')->with('message', 'Project Updated !');
     }
 
     /**

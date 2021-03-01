@@ -204,8 +204,8 @@ socket.on('pir',function(message){
         if (stop==0){
             // $.ajax(root+'/startvideo?force=1&tag=Automatic_Record');
             console.log("Record Stopped");
-            start=0;
             stop+=1;
+            start=0;
         }else{
             console.log("Sudah Distop");
         }
