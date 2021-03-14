@@ -77,7 +77,7 @@ class ProjectController extends Controller
         $projects = DB::table('projects')->where('id', $id)->first();
         // dd($projects);
         $user = Auth::user();
-        return view('projects.edit', compact('projects','user'));
+        return view('projects.edit', compact('projects', 'user'));
     }
 
     /**
